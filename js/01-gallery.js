@@ -28,17 +28,20 @@ function createCard(images) {
     .join('');
 }
 
+// !============
+// function galleryClick(evt){
+//   if (evt.target.nodeName !== `IMG`){
+//       return;
+//   }
+//       const instance = basicLightbox.create(`
+//       <img src="${evt.target.dataset.source}" width="800" height="600">
+//       `)
+//       instance.show();
+// }
 
-function galleryClick(evt){
-  if (evt.target.nodeName !== `IMG`){
-      return;
-  }
-      const instance = basicLightbox.create(`
-      <img src="${evt.target.dataset.source}" width="800" height="600">
-      `)
-      instance.show();
-}
 
+
+// !==============
 // function galleryClick(evn) {
 //   evn.preventDefault();
 //   const image = evn.target.classList.contains('gallery');
@@ -51,7 +54,7 @@ function galleryClick(evt){
 // function onModal() {
 //   const instance = basicLightbox.create(
 //     `
-//        <img src="${evt.target.dataset.source}" width="800" height="600"
+//        <img src="${original}" width="800" height="600"
 //     `,
 //     {
 //       onShow: instance => {
