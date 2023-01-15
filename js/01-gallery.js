@@ -10,8 +10,7 @@ galleryConteiner.insertAdjacentHTML('beforeend', cardMarkup);
 galleryConteiner.addEventListener('click', galleryClick);
 
 function createCard(images) {
-  return images
-    .map(({ preview, original, description }) => {
+  return images.map(({ preview, original, description }) => {
       return;
       `
         <div class="gallery__item">
@@ -29,34 +28,45 @@ function createCard(images) {
     .join('');
 }
 
-function galleryClick(evn) {
-  evn.preventDefault();
-  const image = evn.target.classList.contains('gallery');
-  if (!image) {
-    return;
+
+function galleryClick(evt){
+  if (evt.target.nodeName !== `IMG`){
+      return;
   }
-  onModal();
+      const instance = basicLightbox.create(`
+      <img src="${evt.target.dataset.source}" width="800" height="600">
+      `)
+      instance.show();
 }
 
-function onModal() {
-  const instance = basicLightbox.create(
-    `
-        <img src = "${original}" width="800" height="600"
-        `,
-    {
-      onShow: instance => {
-        galleryConteiner.addEventListener('keydown', onEscapeButton);
-      },
-      onClose: instance => {
-        galleryConteiner.removeEventListener('keydown', onEscapeButton);
-      },
-    }
-  );
+// function galleryClick(evn) {
+//   evn.preventDefault();
+//   const image = evn.target.classList.contains('gallery');
+//   if (!image) {
+//     return;
+//   }
+//   onModal();
+// }
 
-  instance.show();
-  function onEscapeButton(evn) {
-    if (evn.key === 'Escape') {
-      instance.close();
-    }
-  }
-}
+// function onModal() {
+//   const instance = basicLightbox.create(
+//     `
+//        <img src="${evt.target.dataset.source}" width="800" height="600"
+//     `,
+//     {
+//       onShow: instance => {
+//         galleryConteiner.addEventListener('keydown', onEscapeButton);
+//       },
+//       onClose: instance => {
+//         galleryConteiner.removeEventListener('keydown', onEscapeButton);
+//       },
+//     }
+//   );
+
+//   instance.show();
+//   function onEscapeButton(evn) {
+//     if (evn.key === 'Escape') {
+//       instance.close();
+//     }
+//   }
+// }
