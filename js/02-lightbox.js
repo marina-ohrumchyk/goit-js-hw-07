@@ -31,3 +31,8 @@ function galleryClick(event) {
 }
 
 new SimpleLightbox('.gallery a');
+const gallery = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: "alt",
+  captionDelay: 250,
+});

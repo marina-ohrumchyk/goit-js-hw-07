@@ -29,6 +29,8 @@ function createCard(images) {
 }
 
 function galleryClick(evt) {
+  evt.preventDefault();
+  
   if (evt.target.nodeName !== `IMG`) {
     return;
   }
